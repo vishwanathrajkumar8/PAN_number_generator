@@ -1,4 +1,4 @@
-function generatePAN(firstName, lastName) {
+function generatePAN(firstName, lastName, type) {
     // Function to generate a random letter
     function getRandomLetter() {
       const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -31,7 +31,7 @@ function generatePAN(firstName, lastName) {
     const firstThree = getRandomLetter() + getRandomLetter() + getRandomLetter();
   
     // Fourth character
-    const fourth = 'P'; // Assuming individual
+    const fourth = type; // for tht the type of the professionals
   
     // Fifth character
     const fifth = lastName.charAt(0).toUpperCase() || getRandomLetter();
@@ -54,8 +54,9 @@ function generatePAN(firstName, lastName) {
   document.getElementById('generateBtn').addEventListener('click', function() {
       const firstName = document.getElementById('firstNameInput').value;
       const lastName = document.getElementById('lastNameInput').value;
-      if (firstName && lastName) {
-          const panNumber = generatePAN(firstName, lastName);
+      const type = document.getElementById('typeSelect').value;
+      if (firstName && lastName && type) {
+          const panNumber = generatePAN(firstName, lastName, type);
           document.getElementById('panDisplay').textContent = panNumber;
       } else {
           alert('Please enter both first name and last name.');
